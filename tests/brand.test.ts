@@ -4,9 +4,20 @@ import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import { Lockup } from "@/components/brand/Lockup";
+import { PoweredBy } from "@/components/brand/PoweredBy";
 import { siteConfig } from "@/site.config";
 
 const root = process.cwd();
+
+describe("PoweredBy", () => {
+  it("draws the parent link in ink with a solid underline, not a faded or default color", () => {
+    const html = renderToStaticMarkup(createElement(PoweredBy));
+    const link = html.match(/<a\s[^>]*>/)?.[0] ?? "";
+    const classes = /class="([^"]*)"/.exec(link)?.[1]?.split(" ") ?? [];
+    expect(classes).toEqual(expect.arrayContaining(["text-ink", "underline", "decoration-ink"]));
+    expect(classes.some((c) => /^decoration-ink\/\d+$/.test(c))).toBe(false);
+  });
+});
 
 describe("Lockup", () => {
   const html = renderToStaticMarkup(createElement(Lockup));

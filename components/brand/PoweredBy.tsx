@@ -26,7 +26,7 @@ export function PoweredBy({ className = "", compact = false }: PoweredByProps) {
     return (
         <p className={`font-mono uppercase text-body ${size} ${className}`}>
             {poweredBy.label}{" "}
-            <a href={poweredBy.url} className="underline decoration-ink/30 underline-offset-2 hover:decoration-ink">
+            <a href={poweredBy.url} className="text-ink underline decoration-ink underline-offset-2 hover:decoration-2">
                 {poweredBy.name}
             </a>
         </p>
