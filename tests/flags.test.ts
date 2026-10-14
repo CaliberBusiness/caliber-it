@@ -2,17 +2,23 @@ import { describe, expect, it } from "vitest";
 import { FLAGS, type Flags } from "@/content/flags";
 import { isEnabled, priceToShow, visibleOnly } from "@/lib/flags";
 
-const ALL_ON: Flags = { showPricing: true, showInPractice: true, showTestimonial: true, showWork: true };
+const ALL_ON: Flags = {
+  showPricing: true,
+  showInPractice: true,
+  showTestimonial: true,
+  showWork: true,
+  showClientLogos: true,
+};
 
 describe("FLAGS", () => {
-  it("defaults every claim flag to false", () => {
-    const claimFlags = Object.entries(FLAGS).filter(([key]) => key !== "showWork");
-    expect(claimFlags.length).toBeGreaterThan(0);
-    expect(claimFlags.every(([, value]) => value === false)).toBe(true);
-  });
-
-  it("shows the Work section by default", () => {
-    expect(FLAGS.showWork).toBe(true);
+  it("keeps unapproved claims off and the approved proof on", () => {
+    expect(FLAGS).toEqual({
+      showPricing: false,
+      showInPractice: false,
+      showTestimonial: false,
+      showWork: true,
+      showClientLogos: true,
+    });
   });
 });
 
@@ -30,7 +36,7 @@ describe("isEnabled", () => {
 describe("visibleOnly", () => {
   const items = [
     { id: "always" },
-    { id: "gated", requiresFlag: "showTestimonial" as const },
+    { id: "gated", requiresFlag: "showInPractice" as const },
   ];
 
   it("drops gated items while their flag is off", () => {

@@ -1,6 +1,7 @@
 import type { ComponentType } from "react";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
+import { ClientLogos } from "@/components/sections/ClientLogos";
 import { Contact } from "@/components/sections/Contact";
 import { Hero } from "@/components/sections/Hero";
 import { HowSupportWorks } from "@/components/sections/HowSupportWorks";
@@ -10,7 +11,7 @@ import { Testimonial } from "@/components/sections/Testimonial";
 import { Work } from "@/components/sections/Work";
 import type { SectionProps } from "@/components/ui/Section";
 import { NAV_COPY } from "@/content/nav";
-import { visibleOnly, type Gated } from "@/lib/flags";
+import { isEnabled, visibleOnly, type Gated } from "@/lib/flags";
 import { buildJsonLd, serializeJsonLd } from "@/lib/seo";
 
 interface PageSection extends Gated {
@@ -19,8 +20,8 @@ interface PageSection extends Gated {
 }
 
 /**
- * Page order after the hero. Gated sections drop out entirely, and the
- * white/paper backgrounds re-alternate around whatever is left.
+ * Page order after the hero and its logo strip. Gated sections drop out
+ * entirely, and the white/paper backgrounds re-alternate around whatever is left.
  */
 const SECTIONS: readonly PageSection[] = [
     { key: "services", Component: Services },
@@ -45,6 +46,8 @@ export default function HomePage() {
             <Header />
             <main id="main">
                 <Hero />
+                {/* A thin white band, not a toned section, so it stays out of the alternation. */}
+                {isEnabled("showClientLogos") ? <ClientLogos /> : null}
                 {sections.map(({ key, Component }, index) => (
                     <Component key={key} tone={index % 2 === 0 ? "paper" : "white"} />
                 ))}

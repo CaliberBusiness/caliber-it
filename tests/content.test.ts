@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import * as clientLogos from "@/content/client-logos";
 import * as contact from "@/content/contact";
 import * as footer from "@/content/footer";
 import * as hero from "@/content/hero";
@@ -20,7 +21,7 @@ function collectStrings(value: unknown): string[] {
 }
 
 const ALL_COPY = collectStrings([
-  contact, footer, hero, inPractice, nav, seo, services, support, testimonial, work, siteConfig,
+  clientLogos, contact, footer, hero, inPractice, nav, seo, services, support, testimonial, work, siteConfig,
 ]);
 
 describe("copy hygiene", () => {

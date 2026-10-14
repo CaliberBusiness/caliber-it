@@ -30,14 +30,15 @@ npm test           # Vitest, run once
 
 ## Flags (`content/flags.ts`)
 
-All default to `false` except `showWork`. Flip a `false` one only with sign-off.
+`showPricing`, `showInPractice` and `showTestimonial` default to `false`; flip one only with sign-off. The rest are on and show only approved content.
 
-| Flag | Hides |
-|---|---|
-| `showPricing` | Every price. Prices are also `null` in `content/services.ts`, and both gates must pass. |
-| `showInPractice` | The "In practice" section and its nav link |
-| `showTestimonial` | The testimonial |
-| `showWork` | The "Work" section and its nav link. On by default. |
+| Flag | Hides | Default |
+|---|---|---|
+| `showPricing` | Every price. Prices are also `null` in `content/services.ts`, and both gates must pass. | off |
+| `showInPractice` | The "In practice" section and its nav link | off |
+| `showTestimonial` | The testimonial | off |
+| `showWork` | The "Work" section and its nav link | on |
+| `showClientLogos` | The "Built for" logo strip under the hero (`content/client-logos.ts`) | on |
 
 ## Environment variables
 

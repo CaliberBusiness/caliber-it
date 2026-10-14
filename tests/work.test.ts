@@ -2,8 +2,8 @@ import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { Work } from "@/components/sections/Work";
-import { FLAGS } from "@/content/flags";
 import { WORK_COPY, WORK_GROUPS } from "@/content/work";
+import { attribute, renderHome, visibleText } from "./support/html";
 
 const PROJECTS = WORK_GROUPS.flatMap((group) => group.projects);
 
@@ -22,21 +22,6 @@ const EXCLUDED = [
   "LeadFlow",
   "AAMS",
 ];
-
-/** Text a visitor sees: tags stripped, the entities React escapes decoded. */
-function visibleText(html: string): string {
-  return html
-    .replace(/<span class="sr-only">.*?<\/span>/g, "")
-    .replace(/<[^>]+>/g, " ")
-    .replace(/&#x27;/g, "'")
-    .replace(/&quot;/g, '"')
-    .replace(/&amp;/g, "&")
-    .replace(/\s+/g, " ");
-}
-
-function attribute(tag: string, name: string): string | undefined {
-  return new RegExp(`\\s${name}="([^"]*)"`).exec(tag)?.[1];
-}
 
 describe("work content", () => {
   it("lists the five live projects, in source order", () => {
@@ -121,30 +106,22 @@ describe("showWork flag", () => {
     vi.resetModules();
   });
 
-  /** Renders the real page with showWork forced, so the section and nav wiring are both covered. */
-  async function renderHome(showWork: boolean): Promise<string> {
-    vi.resetModules();
-    vi.doMock("@/content/flags", () => ({ FLAGS: { ...FLAGS, showWork } }));
-    const { default: HomePage } = await import("@/app/page");
-    return renderToStaticMarkup(createElement(HomePage));
-  }
-
   it("renders the section and its nav links when on", async () => {
-    const html = await renderHome(true);
+    const html = await renderHome({ showWork: true });
     expect(html).toContain('id="work"');
     // Desktop nav and mobile menu.
     expect(html.match(/href="#work"/g)).toHaveLength(2);
   });
 
   it("places Work after How support works and before Contact", async () => {
-    const html = await renderHome(true);
+    const html = await renderHome({ showWork: true });
     const order = ["support", "work", "contact"].map((id) => html.indexOf(`<section id="${id}"`));
     expect(order.every((index) => index >= 0)).toBe(true);
     expect([...order].sort((a, b) => a - b)).toEqual(order);
   });
 
   it("drops both the section and the nav links when off, leaving the rest of the page", async () => {
-    const html = await renderHome(false);
+    const html = await renderHome({ showWork: false });
     expect(html).not.toContain('id="work"');
     expect(html).not.toContain('href="#work"');
     expect(html).toContain('id="contact"');

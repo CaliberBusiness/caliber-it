@@ -76,3 +76,21 @@ export interface WorkGroup {
     readonly note: string | null;
     readonly projects: readonly WorkProject[];
 }
+
+export interface ImageFile {
+    /** Under public/. */
+    readonly src: string;
+    /** The file's pixel size, for its aspect ratio. */
+    readonly width: number;
+    readonly height: number;
+}
+
+export interface ClientLogo {
+    /** Also the logo's alt text. */
+    readonly name: string;
+    /** Absolute https URL of the client's project. */
+    readonly url: string;
+    readonly image: ImageFile;
+    /** Drawn larger: square and stacked logos read small at the wordmark height. */
+    readonly enlarge: boolean;
+}

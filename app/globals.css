@@ -19,6 +19,21 @@
   --inset-shadow-*: initial;
   --drop-shadow-*: initial;
   --text-shadow-*: initial;
+
+  /*
+   * The logo strip, copied from the Caliber site's Partners marquee: the track
+   * holds two identical halves, and shifting by one half loops seamlessly.
+   */
+  --animate-marquee: marquee 60s linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
 }
 
 /* next/font sets these variables on <html> in app/layout.tsx. */
