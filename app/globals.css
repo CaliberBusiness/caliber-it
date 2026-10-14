@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens. Flat, square and ruled: the color, radius and shadow scales
+ * are reset, so only this palette exists and rounded-* and shadow-* utilities
+ * generate nothing. lib/tokens.ts mirrors the two colors the favicon needs.
+ */
+@theme {
+  --color-*: initial;
+  --color-white: #ffffff;
+  --color-ink: #2b2b2b; /* headings and rules */
+  --color-body: #4a4a4a; /* running text */
+  --color-gold: #f6b130; /* CTAs and highlights, always with ink text */
+  --color-aqua: #7fffd4; /* accent fills only */
+  --color-paper: #f7f7f4; /* alternating sections */
+
+  --radius-*: initial;
+  --shadow-*: initial;
+  --inset-shadow-*: initial;
+  --drop-shadow-*: initial;
+  --text-shadow-*: initial;
+}
+
+/* next/font sets these variables on <html> in app/layout.tsx. */
+@theme inline {
+  --font-heading: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-public-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    background-color: var(--color-white);
+    color: var(--color-body);
+    font-family: var(--font-public-sans), ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    color: var(--color-ink);
+    font-family: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+  }
+
+  /* Square controls everywhere, including native selects on macOS and iOS. */
+  input,
+  select,
+  textarea,
+  button {
+    border-radius: 0;
+  }
+
+  /* Ink, not gold: a gold ring on white is too faint to find (1.9:1). */
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 2px;
+  }
+}
