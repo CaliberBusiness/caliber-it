@@ -2,7 +2,8 @@
  * Everything that names the brand, its domain or its parent company.
  *
  * Spinning this service off onto its own domain should be an edit to this
- * file plus new env vars, nothing else. Section copy lives in content/, and
+ * file, new env vars, and new logo and icon files (public/images/ and the
+ * icon files in app/), nothing else. Section copy lives in content/, and
  * nothing in content/ or components/ hardcodes the brand or the parent.
  */
 
@@ -32,6 +33,8 @@ export interface PoweredBy {
 
 export interface SiteConfig {
     readonly brandName: string;
+    /** Under public/. Shown beside brandName in the header and footer. */
+    readonly logoSrc: string;
     /** Origin only, no trailing slash. */
     readonly siteUrl: string;
     readonly allowIndex: boolean;
@@ -94,6 +97,8 @@ const PARENT_URL = "https://www.caliberbusinessresource.com";
 
 export const siteConfig: SiteConfig = {
     brandName: "Caliber IT Solutions",
+    // The same file the Caliber site uses (public/images/logo.jpg there too).
+    logoSrc: "/images/logo.jpg",
     // NEXT_PUBLIC_* values are fixed at build time: changing either needs a redeploy.
     siteUrl: resolveSiteUrl(process.env.NEXT_PUBLIC_SITE_URL, process.env.NODE_ENV),
     allowIndex: isIndexingAllowed(process.env.NEXT_PUBLIC_ALLOW_INDEX),

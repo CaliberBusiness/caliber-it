@@ -20,7 +20,8 @@ npm test           # Vitest, run once
 
 | Path | What it holds |
 |---|---|
-| `site.config.ts` | Brand name, site URL, email, addresses, legal links, copyright holder, and the `poweredBy` switch |
+| `site.config.ts` | Brand name, logo path, site URL, email, addresses, legal links, copyright holder, and the `poweredBy` switch |
+| `public/images/logo.jpg`, `app/favicon.ico`, `app/icon.png`, `app/apple-icon.png` | Caliber's logo and favicon set, copied unchanged from the Caliber site |
 | `content/` | All page copy as typed data, plus `flags.ts`. No copy lives in JSX. |
 | `components/` | `brand/` (lockup, powered-by line), `layout/`, `sections/`, `forms/`, `ui/` |
 | `lib/lead/` | Form validation (shared by browser and server) and the GoHighLevel payload |
