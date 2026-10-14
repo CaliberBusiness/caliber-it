@@ -15,7 +15,7 @@ describe("FLAGS", () => {
     expect(FLAGS).toEqual({
       showPricing: false,
       showInPractice: false,
-      showTestimonial: false,
+      showTestimonial: true,
       showWork: true,
       showClientLogos: true,
     });

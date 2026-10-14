@@ -8,7 +8,7 @@ import * as nav from "@/content/nav";
 import * as seo from "@/content/seo";
 import * as services from "@/content/services";
 import * as support from "@/content/support";
-import * as testimonial from "@/content/testimonial";
+import * as testimonials from "@/content/testimonials";
 import * as work from "@/content/work";
 import { siteConfig } from "@/site.config";
 
@@ -21,7 +21,7 @@ function collectStrings(value: unknown): string[] {
 }
 
 const ALL_COPY = collectStrings([
-  clientLogos, contact, footer, hero, inPractice, nav, seo, services, support, testimonial, work, siteConfig,
+  clientLogos, contact, footer, hero, inPractice, nav, seo, services, support, testimonials, work, siteConfig,
 ]);
 
 describe("copy hygiene", () => {

@@ -94,3 +94,14 @@ export interface ClientLogo {
     /** Drawn larger: square and stacked logos read small at the wordmark height. */
     readonly enlarge: boolean;
 }
+
+export interface Testimonial {
+    /** Verbatim from the client. "…" marks a cut. */
+    readonly quote: string;
+    /** Null when the client gave none. Never filled in. */
+    readonly name: string | null;
+    readonly role: string;
+    readonly company: string;
+    /** Absolute https URL of the project, or null for no link. */
+    readonly url: string | null;
+}
