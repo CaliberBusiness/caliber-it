@@ -2,11 +2,17 @@ import { describe, expect, it } from "vitest";
 import { FLAGS, type Flags } from "@/content/flags";
 import { isEnabled, priceToShow, visibleOnly } from "@/lib/flags";
 
-const ALL_ON: Flags = { showPricing: true, showInPractice: true, showTestimonial: true };
+const ALL_ON: Flags = { showPricing: true, showInPractice: true, showTestimonial: true, showWork: true };
 
 describe("FLAGS", () => {
-  it("defaults every flag to false", () => {
-    expect(Object.values(FLAGS).every((value) => value === false)).toBe(true);
+  it("defaults every claim flag to false", () => {
+    const claimFlags = Object.entries(FLAGS).filter(([key]) => key !== "showWork");
+    expect(claimFlags.length).toBeGreaterThan(0);
+    expect(claimFlags.every(([, value]) => value === false)).toBe(true);
+  });
+
+  it("shows the Work section by default", () => {
+    expect(FLAGS.showWork).toBe(true);
   });
 });
 

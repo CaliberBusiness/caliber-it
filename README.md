@@ -29,13 +29,14 @@ npm test           # Vitest, run once
 
 ## Flags (`content/flags.ts`)
 
-All default to `false`. Flip one only with sign-off.
+All default to `false` except `showWork`. Flip a `false` one only with sign-off.
 
 | Flag | Hides |
 |---|---|
 | `showPricing` | Every price. Prices are also `null` in `content/services.ts`, and both gates must pass. |
 | `showInPractice` | The "In practice" section and its nav link |
 | `showTestimonial` | The testimonial |
+| `showWork` | The "Work" section and its nav link. On by default. |
 
 ## Environment variables
 

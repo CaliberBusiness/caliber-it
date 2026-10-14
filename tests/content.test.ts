@@ -8,6 +8,7 @@ import * as seo from "@/content/seo";
 import * as services from "@/content/services";
 import * as support from "@/content/support";
 import * as testimonial from "@/content/testimonial";
+import * as work from "@/content/work";
 import { siteConfig } from "@/site.config";
 
 /** Every string reachable from a value, functions skipped. */
@@ -19,7 +20,7 @@ function collectStrings(value: unknown): string[] {
 }
 
 const ALL_COPY = collectStrings([
-  contact, footer, hero, inPractice, nav, seo, services, support, testimonial, siteConfig,
+  contact, footer, hero, inPractice, nav, seo, services, support, testimonial, work, siteConfig,
 ]);
 
 describe("copy hygiene", () => {
@@ -100,5 +101,11 @@ describe("navigation", () => {
   it("hides the In practice link behind the same flag as the section", () => {
     const link = nav.NAV_ITEMS.find((item) => item.href === `#${nav.SECTION_IDS.inPractice}`);
     expect(link?.requiresFlag).toBe("showInPractice");
+  });
+
+  it("hides the Work link behind the same flag as the section", () => {
+    const link = nav.NAV_ITEMS.find((item) => item.href === `#${nav.SECTION_IDS.work}`);
+    expect(link?.label).toBe("Work");
+    expect(link?.requiresFlag).toBe("showWork");
   });
 });

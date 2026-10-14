@@ -9,6 +9,9 @@ export default defineConfig({
     // Mirrors the "@/*" path in tsconfig.json.
     alias: [{ find: /^@\//, replacement: `${root}/` }],
   },
+  // tsconfig.json keeps JSX as-is for Next's compiler; tests compile it here
+  // so components can be rendered in Node.
+  oxc: { jsx: { runtime: "automatic" } },
   test: {
     environment: "node",
     include: ["tests/**/*.test.ts"],

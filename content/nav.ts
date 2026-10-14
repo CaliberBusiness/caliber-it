@@ -4,6 +4,7 @@ import type { Link, NavItem } from "./types";
 export const SECTION_IDS = {
     services: "services",
     support: "support",
+    work: "work",
     inPractice: "in-practice",
     testimonial: "testimonial",
     contact: "contact",
@@ -12,7 +13,8 @@ export const SECTION_IDS = {
 export const NAV_ITEMS: readonly NavItem[] = [
     { label: "Services", href: `#${SECTION_IDS.services}` },
     { label: "How support works", href: `#${SECTION_IDS.support}` },
-    // Same flag as the section, so the link never points at nothing.
+    // Gated links use the same flag as their section, so a link never points at nothing.
+    { label: "Work", href: `#${SECTION_IDS.work}`, requiresFlag: "showWork" },
     { label: "In practice", href: `#${SECTION_IDS.inPractice}`, requiresFlag: "showInPractice" },
     { label: "Contact", href: `#${SECTION_IDS.contact}` },
 ];

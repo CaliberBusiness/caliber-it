@@ -7,6 +7,7 @@ import { HowSupportWorks } from "@/components/sections/HowSupportWorks";
 import { InPractice } from "@/components/sections/InPractice";
 import { Services } from "@/components/sections/Services";
 import { Testimonial } from "@/components/sections/Testimonial";
+import { Work } from "@/components/sections/Work";
 import type { SectionProps } from "@/components/ui/Section";
 import { NAV_COPY } from "@/content/nav";
 import { visibleOnly, type Gated } from "@/lib/flags";
@@ -24,6 +25,7 @@ interface PageSection extends Gated {
 const SECTIONS: readonly PageSection[] = [
     { key: "services", Component: Services },
     { key: "support", Component: HowSupportWorks },
+    { key: "work", Component: Work, requiresFlag: "showWork" },
     { key: "in-practice", Component: InPractice, requiresFlag: "showInPractice" },
     { key: "testimonial", Component: Testimonial, requiresFlag: "showTestimonial" },
     { key: "contact", Component: Contact },

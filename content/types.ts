@@ -56,3 +56,23 @@ export interface InPracticeRow {
     readonly action: string;
     readonly service: ServiceId;
 }
+
+export type WorkTag = "Websites" | "CRM & Automation" | "Integrations" | "IT support";
+
+export interface WorkProject {
+    readonly name: string;
+    /** What was built, one claim per line, exactly as worded at the source. */
+    readonly built: readonly string[];
+    readonly tags: readonly WorkTag[];
+    readonly stack: string;
+    /** Absolute https URL of the live project. */
+    readonly url: string;
+}
+
+export interface WorkGroup {
+    readonly key: string;
+    readonly label: string;
+    /** One line under the label. Null renders nothing. */
+    readonly note: string | null;
+    readonly projects: readonly WorkProject[];
+}
