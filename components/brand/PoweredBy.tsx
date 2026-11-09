@@ -9,8 +9,10 @@ interface PoweredByProps {
     readonly compact?: boolean;
 }
 
-const SIZE_DEFAULT = "text-[11px] tracking-[0.12em]";
-const SIZE_COMPACT = "text-[10px] tracking-normal sm:text-[11px] sm:tracking-[0.12em]";
+/** Same type as the main site's "BPO & Managed Staffing" line under its wordmark. */
+const TYPE = "font-wordmark font-semibold uppercase";
+const SIZE_DEFAULT = "text-[10px] tracking-[0.1em]";
+const SIZE_COMPACT = "text-[9px] tracking-normal sm:text-[10px] sm:tracking-[0.1em]";
 
 /**
  * The "Powered by" line, used in the header and the footer. Setting
@@ -24,7 +26,7 @@ export function PoweredBy({ className = "", compact = false }: PoweredByProps) {
 
     const size = compact ? SIZE_COMPACT : SIZE_DEFAULT;
     return (
-        <p className={`uppercase text-body ${size} ${className}`}>
+        <p className={`${TYPE} text-body ${size} ${className}`}>
             {poweredBy.label}{" "}
             <a href={poweredBy.url} className="text-ink underline decoration-ink underline-offset-2 hover:decoration-2">
                 {poweredBy.name}
