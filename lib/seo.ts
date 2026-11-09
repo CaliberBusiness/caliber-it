@@ -24,7 +24,8 @@ export function buildMetadata(config: SiteConfig = siteConfig): Metadata {
             title,
             description: SEO.description,
         },
-        twitter: { card: "summary", title, description: SEO.description },
+        // Large card: app/twitter-image.tsx supplies a 1200x630 image.
+        twitter: { card: "summary_large_image", title, description: SEO.description },
     };
 }
 
