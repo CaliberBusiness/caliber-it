@@ -1,4 +1,4 @@
-import { MONO_LABEL } from "./styles";
+import { LABEL } from "./styles";
 
 interface SectionHeaderProps {
     readonly label: string;
@@ -10,10 +10,10 @@ interface SectionHeaderProps {
 export function SectionHeader({ label, heading, headingId, intro }: SectionHeaderProps) {
     return (
         <div className="max-w-3xl">
-            <p className={MONO_LABEL}>{label}</p>
+            <p className={LABEL}>{label}</p>
             <h2
                 id={headingId}
-                className="mt-3 text-3xl font-extrabold leading-tight tracking-tight text-balance sm:text-4xl"
+                className="mt-3 text-3xl font-bold leading-tight tracking-tight text-balance sm:text-4xl"
             >
                 {heading}
             </h2>

@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import { Ledger, LedgerRow } from "@/components/ui/Ledger";
 import { Section, type SectionProps } from "@/components/ui/Section";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { MONO_LABEL } from "@/components/ui/styles";
+import { LABEL } from "@/components/ui/styles";
 import { IN_PRACTICE, IN_PRACTICE_ROWS } from "@/content/in-practice";
 import { SECTION_IDS } from "@/content/nav";
 import { serviceName } from "@/content/services";
@@ -23,7 +23,7 @@ export function InPractice({ tone }: SectionProps) {
 
             <div className="mt-12">
                 {/* Visual column heads on wide screens; each row carries its own labels for screen readers and phones. */}
-                <div aria-hidden="true" className={`hidden gap-8 pb-3 md:grid md:grid-cols-12 ${MONO_LABEL}`}>
+                <div aria-hidden="true" className={`hidden gap-8 pb-3 md:grid md:grid-cols-12 ${LABEL}`}>
                     <p className="md:col-span-4">{columns.problem}</p>
                     <p className="md:col-span-5">{columns.action}</p>
                     <p className="md:col-span-3">{columns.service}</p>
@@ -39,7 +39,7 @@ export function InPractice({ tone }: SectionProps) {
                                     {row.action}
                                 </Cell>
                                 <Cell term={columns.service} className="md:col-span-3">
-                                    <span className={`inline-block bg-aqua px-2 py-1 text-ink ${MONO_LABEL}`}>
+                                    <span className={`inline-block bg-aqua px-2 py-1 text-ink ${LABEL}`}>
                                         {serviceName(row.service)}
                                     </span>
                                 </Cell>
@@ -61,7 +61,7 @@ interface CellProps {
 function Cell({ term, className, children }: CellProps) {
     return (
         <div className={className}>
-            <dt className={`mb-1 md:sr-only ${MONO_LABEL}`}>{term}</dt>
+            <dt className={`mb-1 md:sr-only ${LABEL}`}>{term}</dt>
             <dd>{children}</dd>
         </div>
     );

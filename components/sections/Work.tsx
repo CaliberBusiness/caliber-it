@@ -1,7 +1,7 @@
 import { Ledger, LedgerRow } from "@/components/ui/Ledger";
 import { Section, type SectionProps } from "@/components/ui/Section";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { MONO_LABEL, TEXT_LINK } from "@/components/ui/styles";
+import { LABEL, TEXT_LINK } from "@/components/ui/styles";
 import { SECTION_IDS } from "@/content/nav";
 import type { WorkProject } from "@/content/types";
 import { WORK_COPY, WORK_GROUPS } from "@/content/work";
@@ -16,7 +16,7 @@ export function Work({ tone }: SectionProps) {
 
             {WORK_GROUPS.map((group) => (
                 <div key={group.key} className="mt-12">
-                    <h3 className={`text-body ${MONO_LABEL}`}>{group.label}</h3>
+                    <h3 className={`text-body ${LABEL}`}>{group.label}</h3>
                     {group.note ? <p className="mt-1 text-sm">{group.note}</p> : null}
                     <Ledger className="mt-3">
                         {group.projects.map((project) => (
@@ -65,10 +65,10 @@ function ProjectRow({ project }: ProjectRowProps) {
                     ))}
                 </ul>
                 <div className="md:col-span-3">
-                    <p className="font-mono text-sm text-ink">{keepSeparatorsTrailing(project.stack)}</p>
+                    <p className="text-sm text-ink">{keepSeparatorsTrailing(project.stack)}</p>
                     <ul role="list" className="mt-3 flex flex-wrap gap-2">
                         {project.tags.map((tag) => (
-                            <li key={tag} className={`border border-ink/30 px-2 py-1 text-ink ${MONO_LABEL}`}>
+                            <li key={tag} className={`border border-ink/30 px-2 py-1 text-ink ${LABEL}`}>
                                 {tag}
                             </li>
                         ))}

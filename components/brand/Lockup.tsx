@@ -15,7 +15,7 @@ export function Lockup() {
     return (
         <a
             href="#top"
-            className="inline-flex items-center gap-2.5 font-heading text-base font-extrabold tracking-tight text-ink sm:text-lg"
+            className="inline-flex items-center gap-2.5 font-wordmark text-base font-semibold tracking-tight text-ink sm:text-lg"
         >
             <Image
                 src={siteConfig.logoSrc}

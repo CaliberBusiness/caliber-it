@@ -1,6 +1,6 @@
 import { Section, type SectionProps } from "@/components/ui/Section";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { MONO_LABEL, TEXT_LINK } from "@/components/ui/styles";
+import { LABEL, TEXT_LINK } from "@/components/ui/styles";
 import { SECTION_IDS } from "@/content/nav";
 import { TESTIMONIALS, TESTIMONIALS_COPY } from "@/content/testimonials";
 import type { Testimonial } from "@/content/types";
@@ -37,7 +37,7 @@ function TestimonialFigure({ item }: TestimonialFigureProps) {
             {/* Pushed to the bottom, so captions line up across a row. */}
             <figcaption className="mt-auto border-t border-ink pt-4">
                 {item.name ? <span className="block font-semibold text-ink">{item.name}</span> : null}
-                <span className={`${item.name ? "mt-1 " : ""}block ${MONO_LABEL}`}>{`${item.role}, ${item.company}`}</span>
+                <span className={`${item.name ? "mt-1 " : ""}block ${LABEL}`}>{`${item.role}, ${item.company}`}</span>
                 {item.url ? (
                     <a
                         href={item.url}

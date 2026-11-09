@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { CONTAINER, MONO_LABEL } from "@/components/ui/styles";
+import { CONTAINER, LABEL } from "@/components/ui/styles";
 import { CLIENT_LOGOS, CLIENT_LOGOS_COPY } from "@/content/client-logos";
 import type { ClientLogo } from "@/content/types";
 
@@ -26,7 +26,7 @@ export function ClientLogos() {
     return (
         <section aria-labelledby={LABEL_ID} className="border-t border-ink bg-white">
             <div className={`${CONTAINER} py-10 sm:py-12`}>
-                <p id={LABEL_ID} className={`mb-8 text-center ${MONO_LABEL}`}>
+                <p id={LABEL_ID} className={`mb-8 text-center ${LABEL}`}>
                     {CLIENT_LOGOS_COPY.label}
                 </p>
                 <div className="group/marquee overflow-hidden">

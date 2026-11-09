@@ -1,6 +1,6 @@
 import { ButtonLink } from "@/components/ui/Button";
 import { Ledger, LedgerRow } from "@/components/ui/Ledger";
-import { CONTAINER, MONO_LABEL } from "@/components/ui/styles";
+import { CONTAINER, LABEL } from "@/components/ui/styles";
 import { HERO, WAYS } from "@/content/hero";
 import { servicesForWay } from "@/content/services";
 
@@ -11,7 +11,7 @@ export function Hero() {
                 <div className="lg:col-span-7">
                     <h1
                         id="hero-heading"
-                        className="text-4xl font-extrabold leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl"
+                        className="text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl"
                     >
                         <span className="block">{HERO.headline}</span>{" "}
                         <span className="mt-2 inline bg-aqua px-1 box-decoration-clone">{HERO.headlineHighlight}</span>
@@ -30,7 +30,7 @@ export function Hero() {
                         <LedgerRow key={way.key}>
                             <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                                 <p className="font-heading text-lg font-bold text-ink">{way.name}</p>
-                                <p className={MONO_LABEL}>{way.terms}</p>
+                                <p className={LABEL}>{way.terms}</p>
                             </div>
                             <p className="mt-2 text-sm leading-relaxed">{servicesForWay(way.key).join(" · ")}</p>
                         </LedgerRow>

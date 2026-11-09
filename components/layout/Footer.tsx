@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import { Lockup } from "@/components/brand/Lockup";
 import { PoweredBy } from "@/components/brand/PoweredBy";
 import ObfuscatedEmail from "@/components/ui/ObfuscatedEmail";
-import { CONTAINER, MONO_LABEL, TEXT_LINK } from "@/components/ui/styles";
+import { CONTAINER, LABEL, TEXT_LINK } from "@/components/ui/styles";
 import { FOOTER } from "@/content/footer";
 import { SECTION_IDS } from "@/content/nav";
 import { ALL_SERVICE_NAMES } from "@/content/services";
@@ -43,7 +43,7 @@ export function Footer() {
                     <address className="mt-5 space-y-4 not-italic">
                         {addresses.map((address) => (
                             <p key={address.label}>
-                                <span className={`block text-ink ${MONO_LABEL}`}>{address.label}</span>
+                                <span className={`block text-ink ${LABEL}`}>{address.label}</span>
                                 {formatAddress(address)}
                             </p>
                         ))}
@@ -63,7 +63,7 @@ export function Footer() {
                             </a>
                         </li>
                     </ul>
-                    <p className="mt-6 font-mono text-xs">
+                    <p className="mt-6 text-xs">
                         © {year} {legal.copyrightHolder}
                     </p>
                 </FooterColumn>
@@ -80,7 +80,7 @@ interface FooterColumnProps {
 function FooterColumn({ title, children }: FooterColumnProps) {
     return (
         <div className="text-sm">
-            <h2 className={`mb-4 text-ink ${MONO_LABEL}`}>{title}</h2>
+            <h2 className={`mb-4 text-ink ${LABEL}`}>{title}</h2>
             {children}
         </div>
     );

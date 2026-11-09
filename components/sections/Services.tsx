@@ -2,7 +2,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import { Ledger, LedgerRow } from "@/components/ui/Ledger";
 import { Section, type SectionProps } from "@/components/ui/Section";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { MONO_LABEL } from "@/components/ui/styles";
+import { LABEL } from "@/components/ui/styles";
 import { SECTION_IDS } from "@/content/nav";
 import { ASSESSMENT, SERVICE_ROWS, SERVICES_SECTION } from "@/content/services";
 import type { ServiceRow } from "@/content/types";
@@ -33,8 +33,8 @@ function AssessmentBanner() {
     return (
         <div className="mt-10 flex flex-col gap-6 bg-gold p-6 text-ink sm:p-8 md:flex-row md:items-center md:justify-between">
             <div>
-                <p className={MONO_LABEL}>{ASSESSMENT.label}</p>
-                <h3 className="mt-2 text-2xl font-extrabold">{ASSESSMENT.title}</h3>
+                <p className={LABEL}>{ASSESSMENT.label}</p>
+                <h3 className="mt-2 text-2xl font-bold">{ASSESSMENT.title}</h3>
                 <p className="mt-2 max-w-xl">{ASSESSMENT.body}</p>
             </div>
             <ButtonLink href={ASSESSMENT.cta.href} variant="dark" className="shrink-0">
@@ -55,8 +55,8 @@ function ServiceLedgerRow({ row }: ServiceLedgerRowProps) {
             <div className="grid gap-4 md:grid-cols-12 md:gap-8">
                 <div className="md:col-span-4">
                     <h3 className="text-xl font-bold">{row.name}</h3>
-                    <p className={`mt-2 ${MONO_LABEL}`}>{row.billing}</p>
-                    {price ? <p className="mt-1 font-mono text-sm font-medium text-ink">{price}</p> : null}
+                    <p className={`mt-2 ${LABEL}`}>{row.billing}</p>
+                    {price ? <p className="mt-1 text-sm font-medium text-ink">{price}</p> : null}
                 </div>
                 <div className="md:col-span-8">
                     <p className="font-medium text-ink">{row.line}</p>

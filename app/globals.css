@@ -36,11 +36,15 @@
   }
 }
 
-/* next/font sets these variables on <html> in app/layout.tsx. */
+/*
+ * next/font sets these variables on <html> in app/layout.tsx. Matches the
+ * main Caliber site: Inter for body and headings, Montserrat for the
+ * wordmark only.
+ */
 @theme inline {
-  --font-heading: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
-  --font-sans: var(--font-public-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+  --font-heading: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-wordmark: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer base {
@@ -57,7 +61,7 @@
   body {
     background-color: var(--color-white);
     color: var(--color-body);
-    font-family: var(--font-public-sans), ui-sans-serif, system-ui, sans-serif;
+    font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
   }
 
@@ -65,7 +69,7 @@
   h2,
   h3 {
     color: var(--color-ink);
-    font-family: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+    font-family: var(--font-heading);
   }
 
   /* Square controls everywhere, including native selects on macOS and iOS. */
