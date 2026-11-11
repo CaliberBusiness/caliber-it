@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { Inter, Montserrat } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
+import { GA_ID } from "@/lib/analytics";
 import { buildMetadata } from "@/lib/seo";
 import { BRAND_COLORS } from "@/lib/tokens";
 import "./globals.css";
@@ -34,6 +36,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     return (
         <html lang="en" className={`${inter.variable} ${montserrat.variable}`}>
             <body>{children}</body>
+            {GA_ID ? <GoogleAnalytics gaId={GA_ID} /> : null}
         </html>
     );
 }

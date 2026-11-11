@@ -40,8 +40,8 @@ describe("formatAddress", () => {
 });
 
 describe("siteConfig defaults", () => {
-  it("keeps the phone out until the 214 port completes", () => {
-    expect(siteConfig.contact.phone).toBeNull();
+  it("uses the 214 number, with a tel: link that matches it", () => {
+    expect(siteConfig.contact.phone).toEqual({ display: "+1 (214) 429-3276", href: "tel:+12144293276" });
   });
 
   it("shows the powered-by line, naming Caliber Business Resource", () => {

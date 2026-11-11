@@ -39,7 +39,13 @@ export function Footer() {
                     <p>
                         <ObfuscatedEmail user={contact.emailUser} domain={contact.emailDomain} className={TEXT_LINK} />
                     </p>
-                    {contact.phone ? <p className="mt-2">{contact.phone}</p> : null}
+                    {contact.phone ? (
+                        <p className="mt-2">
+                            <a href={contact.phone.href} className={TEXT_LINK}>
+                                {contact.phone.display}
+                            </a>
+                        </p>
+                    ) : null}
                     <address className="mt-5 space-y-4 not-italic">
                         {addresses.map((address) => (
                             <p key={address.label}>

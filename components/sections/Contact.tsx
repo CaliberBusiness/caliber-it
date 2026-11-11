@@ -25,6 +25,13 @@ export function Contact({ tone }: SectionProps) {
                         <p>
                             <ObfuscatedEmail user={contact.emailUser} domain={contact.emailDomain} className={TEXT_LINK} />
                         </p>
+                        {contact.phone ? (
+                            <p>
+                                <a href={contact.phone.href} className={TEXT_LINK}>
+                                    {contact.phone.display}
+                                </a>
+                            </p>
+                        ) : null}
                         {/* Staffing leads belong on Caliber's own form. Goes with the powered-by switch. */}
                         {poweredBy.show ? (
                             <p className="text-sm">

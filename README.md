@@ -48,6 +48,7 @@ See `.env.example`.
 |---|---|---|
 | `NEXT_PUBLIC_SITE_URL` | Yes (production) | Canonicals, sitemap and JSON-LD are built from it. A production build fails without it. |
 | `NEXT_PUBLIC_ALLOW_INDEX` | No | `true` at launch. Otherwise every page is `noindex` (meta tag and `X-Robots-Tag` header). Needs a redeploy to take effect. |
+| `NEXT_PUBLIC_GA_ID` | No | GA4 measurement ID. Unset: no GA script and no events. When set, a confirmed lead sends `generate_lead` with its `service`. Needs a redeploy. |
 | `GHL_PIT`, `GHL_LOCATION_ID` | Yes | Server-only. Without them the form returns an error and captures nothing. |
 | `GHL_FIELD_MESSAGE` | No | Defaults to Caliber's existing message field. |
 | `GHL_FIELD_IT_SERVICE`, `GHL_FIELD_IT_TEAM_SIZE`, `GHL_FIELD_IT_CURRENT_TOOLS` | No | Blank until those fields exist in GHL. While blank, the answers go into the message as labelled lines. |

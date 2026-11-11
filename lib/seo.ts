@@ -58,8 +58,8 @@ function toSchemaAddress(address: PostalAddress): Record<string, string> {
 }
 
 /**
- * ProfessionalService JSON-LD. Real facts only: no ratings, reviews, prices,
- * phone or dates. The email is left out on purpose, because the page builds it
+ * ProfessionalService JSON-LD. Real facts only: no ratings, reviews, prices
+ * or dates. The email is left out on purpose, because the page builds it
  * in the browser to keep it away from scrapers.
  */
 export function buildJsonLd(config: SiteConfig = siteConfig): Record<string, unknown> {
@@ -71,6 +71,7 @@ export function buildJsonLd(config: SiteConfig = siteConfig): Record<string, unk
         url: `${config.siteUrl}/`,
         description: SEO.description,
         address: config.addresses.map(toSchemaAddress),
+        ...(config.contact.phone ? { telephone: config.contact.phone.display } : {}),
         hasOfferCatalog: {
             "@type": "OfferCatalog",
             name: SEO.offerCatalogName,

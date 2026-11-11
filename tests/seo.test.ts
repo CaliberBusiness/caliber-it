@@ -63,9 +63,15 @@ describe("buildJsonLd", () => {
     const data = buildJsonLd(LIVE);
     const serialized = JSON.stringify(data);
     expect(serialized.match(/"@type":"Service"/g)).toHaveLength(6);
-    for (const key of ["aggregateRating", "review", "telephone", "foundingDate", "priceRange", "email"]) {
+    for (const key of ["aggregateRating", "review", "foundingDate", "priceRange", "email"]) {
       expect(data).not.toHaveProperty(key);
     }
+  });
+
+  it("gives the phone as telephone, and drops it when there is none", () => {
+    expect(buildJsonLd(LIVE)).toHaveProperty("telephone", "+1 (214) 429-3276");
+    const noPhone: SiteConfig = { ...LIVE, contact: { ...LIVE.contact, phone: null } };
+    expect(buildJsonLd(noPhone)).not.toHaveProperty("telephone");
   });
 
   it("never invents a postal code for the Philippines address", () => {
