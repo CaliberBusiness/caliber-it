@@ -31,6 +31,13 @@ export interface PoweredBy {
     readonly staffingFormUrl: string;
 }
 
+export interface PhoneNumber {
+    /** As visitors read it. Also the JSON-LD telephone. */
+    readonly display: string;
+    /** The link target: "tel:" plus the E.164 number. */
+    readonly href: string;
+}
+
 export interface SiteConfig {
     readonly brandName: string;
     /** Under public/. Shown beside brandName in the header and footer. */
@@ -42,8 +49,8 @@ export interface SiteConfig {
         /** Split so ObfuscatedEmail can assemble the address in the browser only. */
         readonly emailUser: string;
         readonly emailDomain: string;
-        /** Null until the 214 number port completes. Null renders nothing. */
-        readonly phone: string | null;
+        /** Null renders nothing: no footer or contact line, no JSON-LD telephone. */
+        readonly phone: PhoneNumber | null;
     };
     readonly addresses: readonly PostalAddress[];
     readonly poweredBy: PoweredBy;
@@ -95,6 +102,8 @@ export function formatAddress(address: PostalAddress): string {
 
 const PARENT_URL = "https://www.caliberbusinessresource.com";
 
+const PHONE: PhoneNumber = { display: "+1 (214) 429-3276", href: "tel:+12144293276" }; // TODO: confirm number with CEO
+
 export const siteConfig: SiteConfig = {
     brandName: "Caliber IT Solutions",
     // The same file the Caliber site uses (public/images/logo.jpg there too).
@@ -105,7 +114,7 @@ export const siteConfig: SiteConfig = {
     contact: {
         emailUser: "info",
         emailDomain: "caliberbusinessresource.com",
-        phone: null,
+        phone: PHONE,
     },
     addresses: [
         {

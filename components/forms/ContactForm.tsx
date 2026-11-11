@@ -4,6 +4,7 @@ import { useEffect, useState, type ChangeEvent, type FormEvent, type ReactNode }
 import { buttonClasses } from "@/components/ui/Button";
 import { TEXT_LINK } from "@/components/ui/styles";
 import { FORM_COPY, SERVICE_OPTIONS, TEAM_SIZES } from "@/content/contact";
+import { trackLead } from "@/lib/analytics";
 import {
     EMPTY_LEAD,
     HONEYPOT_FIELD,
@@ -130,6 +131,7 @@ export function ContactForm({ privacyUrl }: ContactFormProps) {
                 rememberSubmission();
                 setCooldown(COOLDOWN_SECONDS);
                 setValues(EMPTY_LEAD);
+                trackLead(lead.service);
             }
             setStatus(sent ? "success" : "error");
         } catch {
