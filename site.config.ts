@@ -102,7 +102,7 @@ export function formatAddress(address: PostalAddress): string {
 
 const PARENT_URL = "https://www.caliberbusinessresource.com";
 
-const PHONE: PhoneNumber = { display: "+1 (214) 429-3276", href: "tel:+12144293276" }; // TODO: confirm number with CEO
+const PHONE: PhoneNumber = { display: "+1 (469) 381-8804", href: "tel:+14693818804" };
 
 export const siteConfig: SiteConfig = {
     brandName: "Caliber IT Solutions",

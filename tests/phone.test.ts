@@ -6,7 +6,7 @@ afterEach(() => {
   vi.resetModules();
 });
 
-const PHONE_LINK = /<a href="tel:\+12144293276"[^>]*>\+1 \(214\) 429-3276<\/a>/g;
+const PHONE_LINK = /<a href="tel:\+14693818804"[^>]*>\+1 \(469\) 381-8804<\/a>/g;
 
 describe("phone number", () => {
   it("is a tel: link in the contact section and in the footer", async () => {
