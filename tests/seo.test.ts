@@ -69,7 +69,7 @@ describe("buildJsonLd", () => {
   });
 
   it("gives the phone as telephone, and drops it when there is none", () => {
-    expect(buildJsonLd(LIVE)).toHaveProperty("telephone", "+1 (214) 429-3276");
+    expect(buildJsonLd(LIVE)).toHaveProperty("telephone", "+1 (469) 381-8804");
     const noPhone: SiteConfig = { ...LIVE, contact: { ...LIVE.contact, phone: null } };
     expect(buildJsonLd(noPhone)).not.toHaveProperty("telephone");
   });
